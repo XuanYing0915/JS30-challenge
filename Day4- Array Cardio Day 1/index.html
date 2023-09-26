@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Array Cardio 💪</title>
   <link rel="icon" href="https://fav.farm/🔥" />
 </head>
+
 <body>
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
   <script>
@@ -26,7 +28,7 @@
       { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
       { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
       { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
-    ];
+    ]
 
     const people = [
       'Bernhard, Sandra', 'Bethea, Erin', 'Becker, Carl', 'Bentsen, Lloyd', 'Beckett, Samuel', 'Blake, William', 'Berger, Ric', 'Beddoes, Mick', 'Beethoven, Ludwig',
@@ -34,19 +36,76 @@
       'Benn, Tony', 'Benson, Leana', 'Bent, Silas', 'Berle, Milton', 'Berry, Halle', 'Biko, Steve', 'Beck, Glenn', 'Bergman, Ingmar', 'Black, Elk', 'Berio, Luciano',
       'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
-    ];
-    
+    ]
+
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    // 寫出篩選年代的函式
+    function century (year) {
+      let endYear = year + 100
+      return [year, endYear]
+    }
+
+    // 篩選發明家年代
+    function filterInventors (inventor) {
+      let [startYear, endYear] = century(1500)
+      return inventor.filter((inventor) => inventor.year >= startYear && inventor.year < endYear)
+    }
+
+    // 打印結果
+    console.log('出生於1500年代的發明家:')
+    console.log(filterInventors(inventors))
+
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const inventorsName = inventors.map((inventor) => {
+      return `${inventor.first} ${inventor.last}`
+    })
+
+    console.log('發明家姓名:')
+    console.log(inventorsName)
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const inventorsbirth = inventors.sort((a, b) => {
+      if (a.year > b.year) {
+        return 1
+      } else {
+        return -1
+      }
+    })
+    console.log('發明家出生日(由遠至近):')
+    console.log(inventorsbirth)
+
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    // 用map取得全部年紀
+
+    const inventorsAge = inventors.map((inventor, index) => {
+      const age = {
+        name: inventorsName[index],
+        age: inventor.passed - inventor.year
+      }
+      return age
+    })
+
+    console.log('發明家年紀:')
+    console.log(inventorsAge)
+
+    const ages = inventors.map((inventor) => {
+      return inventor.passed - inventor.year
+    })
+
+    const getSum = (total, number) => {
+      return total + number
+    }
+
+    const inventorsAgeTotal = ages.reduce(getSum)
+
+    console.log('發明家年紀總和:')
+    console.log(inventorsAgeTotal)
 
     // 5. Sort the inventors by years lived
 
@@ -59,8 +118,9 @@
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
 
   </script>
 </body>
+
 </html>
