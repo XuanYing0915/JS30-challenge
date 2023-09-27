@@ -108,17 +108,66 @@
     console.log(inventorsAgeTotal)
 
     // 5. Sort the inventors by years lived
+    const inventorsAgeSort = inventorsAge.sort((a, b) => {
+      if (a.age > b.age) {
+        return 1
+      } else {
+        return -1
+      }
+    })
+
+    console.log('發明家年紀(由長至短):')
+    console.log(inventorsAgeSort)
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    // 用querySelectorAll取得所有的a標籤
+    const category = document.querySelector('.mw-category')
+    const links = Array.from(category.querySelectorAll('a'))
+
+    // 用map取得所有的文字
+    const linksText = links.map((link) => {
+      return link.textContent
+    })
+
+    // 用filter篩選包含'de'的文字
+    const linksTextFilter = linksText.filter((linkText) => {
+      return linkText.includes('de')
+    })
+
+    console.log('巴黎大道包含de的名稱:')
+    console.log(linksTextFilter)
+
+
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const peopleSort = people.sort((a, b) => {
+      const [aLast, aFirst] = a.split(', ')
+      const [bLast, bFirst] = b.split(', ')
+      return aLast > bLast ? 1 : -1
+    })
+
+
+    console.log('人名(由A至Z):')
+    console.log(peopleSort)
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck']
+
+    const dataReduce = data.reduce((obj, item) => {
+      if (!obj[item]) {
+        obj[item] = 0
+      }
+      obj[item]++
+      return obj
+    }, {})
+    console.log('各種交通工具的數量:')
+    console.log(dataReduce)
 
   </script>
 </body>
