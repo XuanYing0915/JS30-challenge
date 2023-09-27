@@ -24,7 +24,9 @@
 
 ### 學習到的技術:
 
-1.Array.prototype.reduce() 2.使用 map()將兩種不同陣列結合
+1.使用 map()將兩種不同陣列結合
+
+2.Array.prototype.reduce()
 
 ##### 參考網站
 
@@ -34,3 +36,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 -map 應用
 https://ithelp.ithome.com.tw/articles/10228634
+
+-reduce() 應用
+https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce

@@ -124,35 +124,50 @@
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
     // 用querySelectorAll取得所有的a標籤
-    const category = document.querySelector('.mw-category')
-    const links = Array.from(category.querySelectorAll('a'))
+    // const category = document.querySelector('.mw-category')
+    // const links = Array.from(category.querySelectorAll('a'))
 
-    // 用map取得所有的文字
-    const linksText = links.map((link) => {
-      return link.textContent
-    })
+    // // 用map取得所有的文字
+    // const linksText = links.map((link) => {
+    //   return link.textContent
+    // })
 
-    // 用filter篩選包含'de'的文字
-    const linksTextFilter = linksText.filter((linkText) => {
-      return linkText.includes('de')
-    })
+    // // 用filter篩選包含'de'的文字
+    // const linksTextFilter = linksText.filter((linkText) => {
+    //   return linkText.includes('de')
+    // })
 
-    console.log('巴黎大道包含de的名稱:')
-    console.log(linksTextFilter)
+    // console.log('巴黎大道包含de的名稱:')
+    // console.log(linksTextFilter)
 
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-    const peopleSort = people.sort((a, b) => {
-      const [aLast, aFirst] = a.split(', ')
-      const [bLast, bFirst] = b.split(', ')
-      return aLast > bLast ? 1 : -1
+
+    // const people = [
+    //     'Bernhard, Sandra', 'Bethea, Erin', 'Becker, Carl', 'Bentsen, Lloyd', 'Beckett, Samuel', 'Blake, William', 'Berger, Ric', 'Beddoes, Mick', 'Beethoven, Ludwig',
+    //     'Belloc, Hilaire', 'Begin, Menachem', 'Bellow, Saul', 'Benchley, Robert', 'Blair, Robert', 'Benenson, Peter', 'Benjamin, Walter', 'Berlin, Irving',
+    //     'Benn, Tony', 'Benson, Leana', 'Bent, Silas', 'Berle, Milton', 'Berry, Halle', 'Biko, Steve', 'Beck, Glenn', 'Bergman, Ingmar', 'Black, Elk', 'Berio, Luciano',
+    //     'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
+    //     'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
+    //   ]
+
+    const peopleName = people.map((name) => {
+      const listName = name.split(', ')
+      return listName
     })
 
+    const sortPeopleName = peopleName.sort((a, b) => {
+      if (a > b) {
+        return 1
+      } else {
+        return -1
+      }
+    })
 
-    console.log('人名(由A至Z):')
-    console.log(peopleSort)
+    console.log("將發明家名字排序:")
+    console.log(sortPeopleName)
 
 
     // 8. Reduce Exercise
@@ -160,9 +175,11 @@
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck']
 
     const dataReduce = data.reduce((obj, item) => {
+      // 如果物件不存在  創建一個  並設為0
       if (!obj[item]) {
         obj[item] = 0
       }
+      // 如果物件存在  就+1
       obj[item]++
       return obj
     }, {})
